@@ -28,7 +28,7 @@ function App() {
           <Route path="/danh-muc-khoa-hoc" exact element={<Category />} />
           <Route element={<PrivateRoute />}>
             <Route path="/khoa-hoc/:id" element={<Course />} />
-            <Route path="/thong-tin-ca-nhan" element={<PersonalInfo/>}/>
+            <Route path="/thong-tin-ca-nhan" element={<PersonalInfo />} />
           </Route>
         </Route>
 
@@ -68,7 +68,16 @@ function App() {
             element={<CourseListRegister />}
           />
         </Route>
+
+
+
+
+
       </Routes>
+
+
+
+
     </BrowserRouter>
   );
 }

@@ -24,98 +24,94 @@ const AdminTemplate = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  useEffect(() => {
-    if (userSignin.maLoaiNguoiDung !== "GV") {
-      return navigate("/");
-    }
-  }, [userSignin,]);
+
 
   return (
-<div>
-    <Layout
-      style={{
-        minHeight: "100vh",
-      }}
-    >
-      
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+    <div>
+      <Layout
+        style={{
+          minHeight: "100vh",
+        }}
       >
-        <img
-          src="/img/600e8df5132cb60024b04964.jpg"
-          alt=""
-          className="w-full"
-        />
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Users">
-            <Menu.Item key="1" icon={<TeamOutlined />}>
-              <NavLink to="/admin/users">Users List</NavLink>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<UserAddOutlined />}>
-              <NavLink to="/admin/users/add-user">Add User</NavLink>
-            </Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub2" icon={<PlayCircleOutlined />} title="Courses">
-            <Menu.Item key="3" icon={<FileTextOutlined />}>
-              <NavLink to="/admin/courses">Course List</NavLink>
-            </Menu.Item>
-            <Menu.Item key="4" icon={<FileAddOutlined />}>
-              <NavLink to="/admin/courses/add-course">Add Course</NavLink>
-            </Menu.Item>
-          </SubMenu>
-        </Menu>
-      </Sider>
-      <Layout className="site-layout">
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-          className="flex items-center justify-end"
+
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
         >
-          <div className="flex items-center">
-            <Button
-              onClick={() => {
-                logoutAction();
-                navigate("/");
-                window.location.reload();
-              }}
-              type="primary"
-            >
-              Đăng xuất
-            </Button>
-            <img
-              src="/img/50d429ea5c9afe0ef9cb3c96f784bea4.jpg"
-              className="w-14 rounded-full mx-3"
-              alt=""
-            />
-            <span className="text-black text-xl"> {userSignin?.hoTen || userLogged?.hoTen}</span>
-          </div>
-        </Header>
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
-        >
-          <div
+          <img
+            src="/img/600e8df5132cb60024b04964.jpg"
+            alt=""
+            className="w-full"
+          />
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+            <SubMenu key="sub1" icon={<UserOutlined />} title="Users">
+              <Menu.Item key="1" icon={<TeamOutlined />}>
+                <NavLink to="/admin/users">Users List</NavLink>
+              </Menu.Item>
+              <Menu.Item key="2" icon={<UserAddOutlined />}>
+                <NavLink to="/admin/users/add-user">Add User</NavLink>
+              </Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" icon={<PlayCircleOutlined />} title="Courses">
+              <Menu.Item key="3" icon={<FileTextOutlined />}>
+                <NavLink to="/admin/courses">Course List</NavLink>
+              </Menu.Item>
+              <Menu.Item key="4" icon={<FileAddOutlined />}>
+                <NavLink to="/admin/courses/add-course">Add Course</NavLink>
+              </Menu.Item>
+            </SubMenu>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout">
+          <Header
             style={{
-              margin: "16px 0",
-              padding: "0px 30px",
-              minHeight: 360,
+              padding: 0,
               background: colorBgContainer,
             }}
+            className="flex items-center justify-end"
           >
-                <h2 className="text-center font-bold text-2xl">
-    Welcome Admin <span className="text-2xl text-orange-600"> {userSignin?.hoTen || userLogged?.hoTen}</span>. Have a good day!
-  </h2>
-  <Button type="primary" onClickCapture={()=>navigate('/')}>VỀ TRANG CHỦ</Button>
-            <Outlet />
-          </div>
-        </Content>
+            <div className="flex items-center">
+              <Button
+                onClick={() => {
+                  logoutAction();
+                  navigate("/");
+                  window.location.reload();
+                }}
+                type="primary"
+              >
+                Đăng xuất
+              </Button>
+              <img
+                src="/img/50d429ea5c9afe0ef9cb3c96f784bea4.jpg"
+                className="w-14 rounded-full mx-3"
+                alt=""
+              />
+              <span className="text-black text-xl"> {userSignin?.hoTen || userLogged?.hoTen}</span>
+            </div>
+          </Header>
+          <Content
+            style={{
+              margin: "0 16px",
+            }}
+          >
+            <div
+              style={{
+                margin: "16px 0",
+                padding: "0px 30px",
+                minHeight: 360,
+                background: colorBgContainer,
+              }}
+            >
+              <h2 className="text-center font-bold text-2xl">
+                Welcome Admin <span className="text-2xl text-orange-600"> {userSignin?.hoTen || userLogged?.hoTen}</span>. Have a good day!
+              </h2>
+              <Button type="primary" onClickCapture={() => navigate('/')}>VỀ TRANG CHỦ</Button>
+              <Outlet />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
     </div>
   );
 };
